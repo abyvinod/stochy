@@ -5,3 +5,4 @@ build/
 session
 lib/BMDP-synthesis/bmdp/IntervalValueIteration.o
 lib/BMDP-synthesis/bmdp/BMDP.o
+results/

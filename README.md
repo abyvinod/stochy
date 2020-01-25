@@ -18,9 +18,23 @@ Run `./INSTALL.sh` for a single script installation of STOCHY. This script perfo
 1. Fetch the necessary dependencies (requires `sudo`) via the script `./get_dep.dev.sh`, and 
 1. Build the C++ object files using `./build_debug.sh`.
 
-The folder `/build/bin` contains all the built and compiled binary files. 
+## How do I run the code?
 
-To run a specific script, simply run `./stochy_XX` where XX is the corresponding model name.
+The folder `/build/bin` contains all the built and compiled binary files. Specifically, it has the `.cpp` files compiled from the `./src/stochy/'.  To run a specific script, simply run `./stochy_XX` where XX is the corresponding model name.
+
+## How do I add new code?
+
+Easiest way to do this through the following steps:
+1. Make a copy of one of the `.cpp` code files in `./src/stochy/'.
+1. Edit the code as required.
+1. Follow the two steps commented on the top of
+   `./src/CMakeLists.txt`.
+1. Run `./build_debug.sh`.
+1. Change directory to `./build/bin`.
+1. Run `./SCRIPT_NAME` to run StocHy on the new script.
+
+Future edits to the script can be quickly built by
+re-running `make SCRIPT_NAME`.
 
 # Docker system
 
