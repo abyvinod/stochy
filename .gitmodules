@@ -4,3 +4,7 @@
 [submodule "lib/cubature"]
 	path = lib/cubature
 	url = https://github.com/stevengj/cubature.git
+[submodule "armadillo"]
+	path = armadillo
+    url = https://gitlab.com/conradsnicta/armadillo-code.git
+    ignore = all

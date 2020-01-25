@@ -3,4 +3,5 @@ build/
 *.o
 *.swp
 session
-armadillo/
+lib/BMDP-synthesis/bmdp/IntervalValueIteration.o
+lib/BMDP-synthesis/bmdp/BMDP.o

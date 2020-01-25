@@ -11,25 +11,20 @@ The tools allows to described discrete time shs by parsing well known state spac
     (2) formal verification via abstractions taking the form of Markov processes and their variants of interval Markov decision processes.
     (3) strategy synthesis for e.g. selection of control actions to maximise satisfiability of a certain property.
 
-# Installation, documentation, and examples
+# Quick start
 
-# Development version 
-  (1)  Run: git submodule update --init --recursive
-  (2)  Obtain required dependencies by running get_dep.dev.sh 
-  (3)  Use build_debug.sh to run StocHy in development mode
-  
-# Release version
-  (1)  Obtain required dependencies by running get_dep.dist.sh 
-  (2)  Use build_release.sh to run StocHy 
-  
- Unless opting to extend or connect StocHy with your own tools, it is advised to opt to install the release version. 
+Run `./INSTALL.sh` for a single script installation of STOCHY. This script performs the three step installation for the user:
+1. Fetch the git submodules that are used in this toolbox.
+1. Fetch the necessary dependencies (requires `sudo`) via the script `./get_dep.dev.sh`, and 
+1. Build the C++ object files using `./build_debug.sh`.
 
-# Compiled versions
-All the built and compiled binary files are then found within /build/bin. One can then run the corresponding binary files by using ./stochy_XX where XX is the corresponding model name.
+The folder `/build/bin` contains all the built and compiled binary files. 
+
+To run a specific script, simply run `./stochy_XX` where XX is the corresponding model name.
 
 # Docker system
 
-To facilitate sharing of StocHy between different operating environments we provide a docker container containing StocHy. Details are found within the Docker folder.
+We also provide a docker container containing `StocHy` to facilitate sharing of StocHy between different operating environments. 
 
 # Wiki
 
@@ -49,10 +44,10 @@ We provide four examples as part of StocHy. For each example we have a dedicated
 
 # Running your own models
 
-Simply create your own Case_study.cpp file within /src/case_studies/. This follows the same structure as described within the TACAS paper, however we don't need to modify the main file each time. We now create an individual case study and call the case study we want to run. 
+Simply create your own Case_study.cpp file within `/src/case_studies/`. This follows the same structure as described within the TACAS paper, however we don't need to modify the main file each time. We now create an individual case study and call the case study we want to run. 
 
 # Connecting with the individual libraries 
-All the src files for the individual libraries can be found within src/ . These are built as individual libraries and one can simply use any of the libraries as needed for further extensions.
+All the src files for the individual libraries can be found within `src/`. These are built as individual libraries and one can simply use any of the libraries as needed for further extensions.
 
     (1) shs - contains the general model description for constructing a shs based on the input model structure; together with the simulator for shs.
     (2) FAUST - library for performing abstractions via MDPs

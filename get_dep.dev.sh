@@ -4,25 +4,17 @@ if ! [ -x "$(command -v sudo)" ]; then
   alias sudo=''
 fi
 
-sudo apt-get -y install cmake
-sudo apt-get -y install libboost-all-dev
-sudo apt-get -y install libopenblas-dev, 
-sudo apt-get -y install liblapack-dev
-
-#TODO: add the following as submodules
+sudo apt-get -y install cmake libboost-all-dev libopenblas-dev liblapack-dev 
 
 echo "--------------------------------"
 echo "working on armadillo ..."
 mkdir -p armadillo
 cd armadillo
-wget https://kent.dl.sourceforge.net/project/arma/armadillo-9.200.5.tar.xz
-tar -xvf armadillo-9.200.5.tar.xz --strip-components 1
-rm armadillo-9.200.5.tar.xz
+git checkout 9.200.x
 ./configure
 make
 sudo make install
 echo "--------------------------------"
 cd ../
 
-sudo apt-get -y install libmatio-dev
-sudo apt-get -y install libginac-dev
+sudo apt-get -y install libmatio-dev libginac-dev
