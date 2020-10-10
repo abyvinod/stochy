@@ -12,7 +12,8 @@
 #include "FAUST.h"
 #include "InputSpec.h"
 
-static void performTask(inputSpec_t<arma::mat, int> input)  {
+static void performTask(inputSpec_t<arma::mat, int> input, 
+    std::string additional_filename_string = "") {
   switch (input.myTask.task) {
   case 1: // Perform simulation depending on model type
   {
@@ -398,7 +399,7 @@ static void performTask(inputSpec_t<arma::mat, int> input)  {
        auto tm = *std::localtime(&t);
        std::ostringstream oss;
        oss << std::put_time(&tm, "%d-%m-%Y-%H-%M-%S");
-       auto str = oss.str();
+       auto str = additional_filename_string + oss.str();
 
        // Rescale grid axis to original axis
        arma::vec inter_d  = arma::ones<arma::vec>(taskFAUST.X.n_rows);
@@ -460,7 +461,7 @@ static void performTask(inputSpec_t<arma::mat, int> input)  {
         auto tm = *std::localtime(&t);
         std::ostringstream oss;
         oss << std::put_time(&tm, "%d-%m-%Y-%H-%M-%S");
-        auto str = oss.str();
+        auto str = additional_filename_string + oss.str();
         taskFAUST.formatOutput(time, str, Problem, N);
       }
     } catch (const std::bad_alloc &e) {
@@ -602,7 +603,7 @@ static void performTask(inputSpec_t<arma::mat, int> input)  {
     std::ofstream myfile;
     std::ostringstream oss;
     oss << std::put_time(&tm, "%d-%m-%Y-%H-%M-%S");
-    auto str = oss.str();
+    auto str = additional_filename_string + oss.str();
 
     // TODO: Rescale grid axis to original axis
     int dim = taskBMDP.desc.boundary.n_rows;

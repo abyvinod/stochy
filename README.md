@@ -29,12 +29,11 @@ Easiest way to do this through the following steps:
 1. Edit the code as required.
 1. Follow the two steps commented on the top of
    `./src/CMakeLists.txt`.
-1. Run `./build_debug.sh`.
-1. Change directory to `./build/bin`.
-1. Run `./SCRIPT_NAME` to run StocHy on the new script.
+1. Run `./build_debug.sh`. You need to do this only once!
+1. Inside `./build/bin`, run `./SCRIPT_NAME` to run StocHy on the new script.
+1. Whenever a change is made to a cpp file, run `make SCRIPT_NAME` to quickly build only the script of interest.
 
-Future edits to the script can be quickly built by
-re-running `make SCRIPT_NAME`.
+For the Automatica paper, `SCRIPT_NAME = stoch_verifyLTI`.
 
 # Docker system
 

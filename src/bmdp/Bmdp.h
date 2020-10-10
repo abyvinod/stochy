@@ -74,7 +74,7 @@ public:
   void createPyGrid(std::vector<Strmode> ver_valid,
                     arma::mat boundary); // print grid
   void createPyGrid(std::vector<Strmode> ver_valid, arma::mat boundary,
-                    std::vector<double> minP); // print grid
+                    std::vector<double> minP, std::string cT); // print grid
   arma::vec getGrid(arma::mat boundary, arma::mat gridsize, arma::mat tol,
                     int m);
   arma::vec getGrid1D(arma::mat boundary, arma::mat gridsize, arma::mat tol,

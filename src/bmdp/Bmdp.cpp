@@ -197,7 +197,8 @@ void bmdp_t::createPyGrid(std::vector<Strmode> ver_valid, arma::mat boundary) {
 }
 // Create python file to plot grid of IMDP
 // with color mapping of probabilities on top of grid
-void bmdp_t::createPyGrid(std::vector<Strmode> ver_valid, arma::mat boundary,std::vector<double> minP) {
+void bmdp_t::createPyGrid(std::vector<Strmode> ver_valid, arma::mat
+    boundary, std::vector<double> minP, std::string cT) {
   // dimensions
   unsigned x_dim = boundary.n_rows;
 
@@ -219,7 +220,7 @@ void bmdp_t::createPyGrid(std::vector<Strmode> ver_valid, arma::mat boundary,std
   }
   std::string Ns = std::to_string(nstates);
 
-  myfile.open("../results/IMDP_gridPlot_" + Ns + "_" + x_dim_str + ".py");
+  myfile.open("../results/IMDP_gridPlot_" + cT + "_" + Ns + "_" + x_dim_str + ".py");
   if (x_dim < 3) {
     myfile << "import numpy as np \n";
     myfile << "import matplotlib.pyplot as plt \n";
@@ -3399,7 +3400,7 @@ void bmdp_t::formatOutput(double time, std::string cT) {
        }
     }
     // Store run times
-    std::string f_name = "../results/IMDP_Runtime_" + Ns + "_" + cT + ".txt";
+    std::string f_name = "../results/IMDP_Runtime_" + cT + "_" + Ns + ".txt";
     myfile.open(f_name);
     myfile << time;
     myfile.close();
@@ -3408,20 +3409,20 @@ void bmdp_t::formatOutput(double time, std::string cT) {
     arma::mat stepsmin = arma::conv_to<arma::mat>::from(this->Stepsmin);
     arma::mat stepsmax = arma::conv_to<arma::mat>::from(this->Stepsmax);
     std::string stepsmin_name =
-      "../results/IMDP_Stepsmin_" + Ns + "_" + cT + ".txt";
-      std::string stepsmax_name =
-      "../results/IMDP_Stepsmax_" + Ns + "_" + cT + ".txt";
+      "../results/IMDP_Stepsmin_" + cT + "_" + Ns + ".txt";
+      std::string stepsmax_name =                   
+      "../results/IMDP_Stepsmax_" + cT + "_" + Ns + ".txt";
 
     stepsmin.save(stepsmin_name, arma::raw_ascii);
     stepsmax.save(stepsmax_name, arma::raw_ascii);
 
     // Storing of verification solution
-    std::string sol_name = "../results/IMDP_Solution_" + Ns + "_" + cT + ".txt";
+    std::string sol_name = "../results/IMDP_Solution_" + cT + "_" + Ns + ".txt";
     this->Solution.save(sol_name, arma::raw_ascii);
 
     // Storing of policy
     if(this->Policy.n_rows > 1){
-      std::string pol_name = "../results/IMDP_Policy_" + Ns + "_" + cT + ".txt";
+      std::string pol_name = "../results/IMDP_Policy_" + cT + "_" + Ns + ".txt";
       this->Policy.save(pol_name, arma::raw_ascii);
     }
   }
@@ -3451,6 +3452,6 @@ void bmdp_t::formatOutput(double time, std::string cT) {
     for(unsigned m =0; m < res.n_rows-1; m++) {
       minP.push_back(res(m));
     }
-    createPyGrid(this->mode, this->desc.boundary, minP);
+    createPyGrid(this->mode, this->desc.boundary, minP, cT);
   }
 }
